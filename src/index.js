@@ -3,13 +3,13 @@ import Game from "./js/Game";
 
 const config = {
   type: Phaser.AUTO,
-  parent: "phaser-example",
+  parent: "UB-Running",
   width: 800,
   height: 600,
   physics: {
     default: 'arcade',
       gravity: { y: 500 }, 
-      debug: true 
+      debug: false 
   },
   scene: [Game]
 };
