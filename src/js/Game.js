@@ -11,10 +11,11 @@ import bridge from '../assets/castleHalfMid.png'
 import box from '../assets/boxWarning.png'
 
 
-let when = 0
+let timer = 0
 let spikeGravity = -500
 let currentScore = 0;
 let currentAnimation;
+let gameOver = false;
 
 
 class Game extends Phaser.Scene {
@@ -39,6 +40,7 @@ class Game extends Phaser.Scene {
         this.sky = this.add.sprite(0, 0, 'bg').setOrigin(0, 0)
         this.sky.setScale(5)
         this.floorGroup = this.physics.add.group();
+        this.trapGroup = this.physics.add.group();
         this.aGrid = new AlignGrid({
             scene: this,
             rows: 11,
@@ -106,8 +108,18 @@ class Game extends Phaser.Scene {
             frameRate: 1,
             repeat: 0
         })
+        this.anims.create({
+            key: 'hurt',
+            frames: [{
+                key: 'player',
+                frame: "p3_hurt.png"
+            }],
+            frameRate: 1,
+            repeat: 0
+        })
         this.physics.add.collider(this.player, this.floorGroup)
-        this.enemy = this.add.sprite(700, 60, 'enemy')
+        // this.physics.add.collider(this.player, this.trapGroup)
+        this.enemy = this.add.sprite(700, 60, 'enemy').setDepth(3)
         this.anims.create({
             key: 'open',
             frames: [{
@@ -144,49 +156,87 @@ class Game extends Phaser.Scene {
             frameRate: 30,
             repeat: 0
         })
-        this.player.play('walk')
     }
     update() {
 
-        if (this.player.y <= 400 && currentAnimation != 'jump') {
+        if (this.player.y <= 400 && currentAnimation != 'jump' && currentAnimation != 'hurt') {
             this.player.play('jump')
             currentAnimation = 'jump'
-        } else if (this.player.y >= 440 && currentAnimation != 'walk') {
+        } else if (this.player.y >= 440 && currentAnimation != 'walk' && currentAnimation != 'hurt') {
             this.player.play('walk')
             currentAnimation = 'walk'
         }
 
 
-        let chance = Math.floor((Math.random() * 100) + 1);
-        if (when >= 60) {
-            if (chance < 11 && chance > 7) {
+
+        if (currentAnimation != 'hurt') {
+            currentScore++
+            let chance = Math.floor((Math.random() * 100) + 1);
+            if (timer >= 60 && chance < 11 && chance > 7 ) {
                 this.play()
-                this.spike = this.physics.add.sprite(700, 100, 'spikes').setDepth(0)
+                this.spike = this.physics.add.sprite(700, 110, 'spikes').setDepth(0)
+                this.trapGroup.add(this.spike)
                 this.spike.setGravityY(9999)
                 this.spike.setGravityX(spikeGravity)
                 this.physics.add.collider(this.spike, this.floorGroup)
-                when = 0
+                timer = 0
             }
+            this.input.on('pointerdown', () => {
+                if (this.player.y >= 440) {
+                    this.player.setVelocityY(-800)
+                }
+            })
+        }else {
+            if (!gameOver){
+                this.gameStyle = {
+                    font: "45px Helvetica",
+                    color: "#000000",
+                    align: "center"
+                };
+                this.textStyle = {
+                    font: "15px Helvetica",
+                    color: "#000000",
+                    align: "center"
+                };
+                this.add.text(300, 300, `Game Over! \n Your Score is ${currentScore}`, this.gameStyle)
+                this.add.text(370, 400, 'Click Anywhere To See Scores', this.textStyle)
+                gameOver = true
+            }
+            this.input.on('pointerdown', () => {
+                this.scene.start('Menu')
+            })
         }
-        currentScore++
         this.score.text = `Score: ${Math.floor(currentScore / 10)}`
 
-        when++
+        timer++
 
+        
 
+        
+        if (this.findEnemy()) {
+            this.player.play('hurt')
+            currentAnimation = 'hurt'
+            this.trapGroup.children.entries.forEach(element => {
 
-        this.input.on('pointerdown', () => {
-            if (this.player.y >= 440) {
-                this.player.setVelocityY(-800)
-            }
-        })
-
+            });
+        }
     }
-
-
     play() {
         this.enemy.play('open')
     }
+
+    findEnemy() {
+        let search = this.trapGroup.children.entries.find( (enemy) => {
+            let xDistance = enemy.x - this.player.x
+            let yDistance = enemy.y - this.player.y
+            return ( Math.abs(xDistance) <= (enemy.height / 2)  && Math.abs(yDistance) <= (enemy.width / 2) )
+        })
+        if (search != undefined){
+            return true
+        }
+        return false
+    }
+    
     placeBlock(pos, key) {
         let block = this.physics.add.sprite(0, 0, key);
         this.aGrid.placeAtIndex(pos, block);

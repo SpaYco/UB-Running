@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import Game from "./js/Game";
+import Menu from "./js/Menu"
 
 const config = {
   type: Phaser.AUTO,
@@ -9,9 +10,9 @@ const config = {
   physics: {
     default: 'arcade',
       gravity: { y: 500 }, 
-      debug: false 
+      debug: true 
   },
-  scene: [Game]
+  scene: [Menu, Game ]
 };
 
 const game = new Phaser.Game(config);
