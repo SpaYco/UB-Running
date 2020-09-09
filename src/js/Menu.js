@@ -39,6 +39,7 @@ class Menu extends Phaser.Scene {
             global.currentScore = 0;
             global.currentAnimation = 'string';
             global.gameOver = false;
+            global.difficulty = 0;
             this.scene.start('Game')
         })
     }

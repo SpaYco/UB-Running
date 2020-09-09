@@ -43,7 +43,7 @@ class Game extends Phaser.Scene {
         });
         this.style = {
             font: "45px Arial",
-            color: "#000000",
+            color: "#fff",
             align: "center"
         };
         this.score = this.add.text(10, 10, `Score: ${global.currentScore}`, this.style)
@@ -161,7 +161,9 @@ class Game extends Phaser.Scene {
             global.currentAnimation = 'walk'
         }
 
-
+        if (global.difficulty % 20000 == 0) {
+            global.spikeGravity -= 0.1
+        }
 
         if (global.currentAnimation != 'hurt') {
             global.currentScore++
