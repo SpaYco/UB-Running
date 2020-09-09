@@ -113,7 +113,6 @@ class Game extends Phaser.Scene {
             repeat: 0
         })
         this.physics.add.collider(this.player, this.floorGroup)
-        // this.physics.add.collider(this.player, this.trapGroup)
         this.enemy = this.add.sprite(700, 60, 'enemy').setDepth(3)
         this.anims.create({
             key: 'open',
@@ -185,12 +184,12 @@ class Game extends Phaser.Scene {
             if (!global.gameOver) {
                 this.gameStyle = {
                     font: "45px Helvetica",
-                    color: "#000000",
+                    color: "#fff",
                     align: "center"
                 };
                 this.textStyle = {
                     font: "15px Helvetica",
-                    color: "#000000",
+                    color: "#fff",
                     align: "center"
                 };
                 this.add.text(300, 300, `Game Over! \n Your Score is ${Math.floor(global.currentScore / 10)}`, this.gameStyle)
