@@ -1,9 +1,8 @@
-import stoneMid from "../assets/stoneMid.png";
 import stone from "../assets/stoneCenter.png";
 import AlignGrid from './helpers/AlignGrid'
 import playerImage from '../assets/player_walk.png'
 import player from '../assets/player_walk.json'
-import bg from '../assets/bg.png'
+import bg from '../assets/bg.jpg'
 import spikes from '../assets/spikes.png'
 import enemy from '../assets/enemy.json'
 import enemyImage from '../assets/enemy.png'
@@ -24,7 +23,6 @@ class Game extends Phaser.Scene {
 
     preload() {
         this.load.image('bg', bg);
-        this.load.image('stoneMid', stoneMid);
         this.load.image('stone', stone);
         this.load.atlas('player', playerImage, player);
         this.load.atlas('enemy', enemyImage, enemy);
