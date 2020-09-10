@@ -1,5 +1,7 @@
+
 import merge from 'webpack-merge';
 import TerserPlugin from 'terser-webpack-plugin';
+import base from './base';
 
 module.exports = merge(base, {
   mode: 'production',

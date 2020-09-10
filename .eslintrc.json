@@ -16,7 +16,7 @@
       "no-param-reassign": "off",
       "eol-last": "off",
       "arrow-parens": "off",
-      "no-unresolved": "off"
+      "import/no-unresolved":  "off"
     },
     "ignorePatterns": [
       "dist/",
