@@ -27,9 +27,9 @@ class Scores extends Phaser.Scene {
         user: global.name,
         score: (Math.floor(global.currentScore / 10))
       }
-      this.person = JSON.stringify(this.person)
+      this.jPerson = JSON.stringify(this.person)
 
-      await this.pushData(this.person)
+      this.pushData(this.jPerson)
     }
 
     if (this.loaded == 'no') {
@@ -42,24 +42,38 @@ class Scores extends Phaser.Scene {
         color: '#fff',
         align: 'center'
       };
+      this.add.text(320, 100, `Leaderboard`, this.style)
+      this.add.text(250, 400, `Your Score Has Been Saved`, this.style) 
       for (let i = 0; i < 5; i += 1) {
-        await this.add.text(100 + i * 100, 200, `${this.result[i].score}`, this.style)
+        await this.add.text(300, 150 + i * 50, `${i + 1}. ${this.result[i].user} => ${this.result[i].score}`, this.style)
       }
     }
   }
-  async pushData(data) {
-    let information = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Ebln0rQMJZ07Mqh88qIl/scores', {
+  async pushData(e) {
+
+    let information = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/ezww6AGdTOyciw0GhscO/scores/', {
       method: 'POST',
       mode: 'cors',
-      body: data
+      headers: {
+        Accept: 'Application/json',
+        'Content-Type': 'application/json',
+      },
+      body: e
     }).then(response => response);
     return information
   }
 
   async getData() {
-    let data = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Ebln0rQMJZ07Mqh88qIl/scores').catch((e) => {return e})
-    let jData = await data.json().result.sort((a, b) => a.score - b.score)
-    return jData
+    let data = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/ezww6AGdTOyciw0GhscO/scores').then(result => result).catch((e) => {
+      return e
+    })
+    let jData = await data.json()
+    jData = await jData.result
+
+    await jData.sort((a, b) => {
+      return b.score - a.score;
+    });
+    return await jData
   }
 }
 
