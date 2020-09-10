@@ -18,6 +18,17 @@ class Scores extends Phaser.Scene {
     this.sky.setScale(5);
     this.pushed = 'no';
     this.loaded = 'no';
+    this.opacity = 'max';
+    this.style = {
+      font: '25px Arial',
+      color: '#fff',
+      align: 'center',
+    };
+    this.restart = this.add.text(275, 450, 'Mouse Click To Restart!', this.style);
+
+    this.input.on('pointerdown', () => {
+      this.scene.start('Menu');
+    });
   }
 
   async update() {
@@ -36,16 +47,22 @@ class Scores extends Phaser.Scene {
     if (this.loaded === 'no') {
       this.loaded = 'yes';
       this.result = await this.getData();
-
-      this.style = {
-        font: '25px Arial',
-        color: '#fff',
-        align: 'center',
-      };
       this.add.text(320, 100, 'Leaderboard', this.style);
       this.add.text(250, 400, 'Your Score Has Been Saved', this.style);
       for (let i = 0; i < 5; i += 1) {
         this.add.text(300, 150 + i * 50, `${i + 1}. ${this.result[i].user} => ${this.result[i].score}`, this.style);
+      }
+    }
+
+    if (this.opacity === 'reached') {
+      this.restart.alpha += 0.01;
+      if (this.restart.alpha >= 1) {
+        this.opacity = 'max';
+      }
+    } else {
+      this.restart.alpha -= 0.01;
+      if (this.restart.alpha < 0.3) {
+        this.opacity = 'reached';
       }
     }
   }
