@@ -8,6 +8,11 @@ module.exports = {
   devtool: 'eval-source-map',
   module: {
     rules: [
+      
+      {
+        test: /\.(scss|css)$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,

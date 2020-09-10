@@ -3,6 +3,7 @@ import Game from './js/Game';
 import Menu from './js/Menu';
 import Scores from './js/scores'
 import RexUIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin';
+import style from './sass/main.scss'
 
 const config = {
   type: Phaser.AUTO,
