@@ -34,14 +34,7 @@
     "stylelint-csstree-validator": "^1.8.0",
     "stylelint-scss": "^3.17.2",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0",
-    "phaser": "^3.24.1",
-    "phaser3-rex-plugins": "^1.1.27",
-    "terser-webpack-plugin": "^4.1.0",
-    "clean-webpack-plugin": "^3.0.0",
-    "webpack": "^4.44.1",
-    "html-webpack-plugin": "^3.2.0",
-    "webpack-merge": "^4.2.2"
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
     "phaser": "^3.24.1",
