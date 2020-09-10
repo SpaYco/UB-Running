@@ -32,6 +32,7 @@ class Menu extends Phaser.Scene {
         this.input = this.add.dom(390, 300, 'input', {
             type: 'text',
             font: '32px Calibri',
+            textAlign: 'center',
             color: '#fff',
             border: '1px solid white',
             outline: 'none',
@@ -48,7 +49,7 @@ class Menu extends Phaser.Scene {
             width: '75px',
             height: '50px',
             cursor: 'pointer'
-        }, 'play')
+        }, 'PLAY')
         this.nameTip = this.add.text(250, 425, `Enter your name to continue`, this.smallStyle)
         this.tip = this.add.text(170, 500, `TIP: use your mouse to jump and avoid traps`, this.smallStyle)
         this.btn.addListener('click')
