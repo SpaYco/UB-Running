@@ -4,5 +4,8 @@ let global = {
     "currentScore": 0,
     "currentAnimation": 'string',
     "gameOver": false,
-    "difficulty": 0
+    "difficulty": 0,
+    "name": 'SpaYso'
 }
+
+export default global

@@ -29,33 +29,75 @@ class Menu extends Phaser.Scene {
             align: "center"
         };
         this.welcome = this.add.text(260, 200, `UB Running`, this.gameStyle)
-
-        this.press = this.add.text(270, 300, `left mouse click to start`, this.smallStyle)
-        this.tip = this.add.text(170, 500, `TIP: use your mouse to jump and avoid traps`, this.smallStyle)
-        this.input.on('pointerdown', () => {
-
-            global.timer = 0
-            global.spikeGravity = -500
-            global.currentScore = 0;
-            global.currentAnimation = 'string';
-            global.gameOver = false;
-            global.difficulty = 0;
-            this.scene.start('Game')
+        this.input = this.add.dom(390, 300, 'input', {
+            type: 'text',
+            font: "32px Calibri",
+            color: '#fff',
+            border: '1px solid white',
+            outline: 'none',
+            backgroundColor: '#ffffff00',
+            width: '250px',
+            height: '50px',
         })
+        this.btn = this.add.dom(390, 375, 'button', {
+            font: "32px Calibri",
+            color: '#fff',
+            border: '1px solid white',
+            outline: 'none',
+            backgroundColor: '#ffffff00',
+            width: '75px',
+            height: '50px',
+            cursor: 'pointer'
+        }, 'play')
+        this.nameTip = this.add.text(250, 425, `Enter your name to continue`, this.smallStyle)
+        this.tip = this.add.text(170, 500, `TIP: use your mouse to jump and avoid traps`, this.smallStyle)
+        this.btn.addListener('click')
+        this.btn.on('click', () => {
+            if (this.input.node.value.length >= 3) {
+                if (this.input.node.value.length > 12) {
+                    this.nameTip.text = 'The Name Is Too Long!'
+                    this.nameTip.x = 275;
+                } else {
+                    global.name = this.input.node.value
+                    global.timer = 0
+                    global.spikeGravity = -500
+                    global.currentScore = 0
+                    global.currentAnimation = 'string'
+                    global.gameOver = false
+                    global.difficulty = 0
+                    this.scene.start('Game')
+                }
+            } else {
+                if (this.input.node.value.length > 0) {
+                    this.nameTip.text = 'The Name Is Too Short!'
+                    this.nameTip.x = 275;
+                } else {
+                    this.nameTip.text = 'Please Enter A Name'
+                    this.nameTip.x = 280;
+                }
+            }
+        })
+
+        this.tip = this.add.text(730, 580, `By SpaYco`, {
+            font: "15px Calibri",
+            fontStyle: 'bold',
+            color: "#fff",
+            align: "center"
+        })
+
     }
     update() {
         if (opacity == 'reached') {
-            this.press.alpha += 0.01
-            if (this.press.alpha >= 1) {
+            this.nameTip.alpha += 0.01
+            if (this.nameTip.alpha >= 1) {
                 opacity = 'max'
             }
         } else {
-            this.press.alpha -= 0.01
-            if (this.press.alpha < 0.3) {
+            this.nameTip.alpha -= 0.01
+            if (this.nameTip.alpha < 0.3) {
                 opacity = 'reached'
             }
         }
-
 
     }
 }
