@@ -17,21 +17,21 @@ class Menu extends Phaser.Scene {
         this.sky = this.add.sprite(0, 0, 'bg').setOrigin(0, 0)
         this.sky.setScale(5)
         this.gameStyle = {
-            font: "55px Calibri",
+            font: '55px Calibri',
             fontStyle: 'bold',
-            color: "#fff",
-            align: "center"
+            color: '#fff',
+            align: 'center'
         };
         this.smallStyle = {
-            font: "25px Calibri",
+            font: '25px Calibri',
             fontStyle: 'bold',
-            color: "#fff",
-            align: "center"
+            color: '#fff',
+            align: 'center'
         };
         this.welcome = this.add.text(260, 200, `UB Running`, this.gameStyle)
         this.input = this.add.dom(390, 300, 'input', {
             type: 'text',
-            font: "32px Calibri",
+            font: '32px Calibri',
             color: '#fff',
             border: '1px solid white',
             outline: 'none',
@@ -40,7 +40,7 @@ class Menu extends Phaser.Scene {
             height: '50px',
         })
         this.btn = this.add.dom(390, 375, 'button', {
-            font: "32px Calibri",
+            font: '32px Calibri',
             color: '#fff',
             border: '1px solid white',
             outline: 'none',
@@ -79,10 +79,10 @@ class Menu extends Phaser.Scene {
         })
 
         this.tip = this.add.text(730, 580, `By SpaYco`, {
-            font: "15px Calibri",
+            font: '15px Calibri',
             fontStyle: 'bold',
-            color: "#fff",
-            align: "center"
+            color: '#fff',
+            align: 'center'
         })
 
     }

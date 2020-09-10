@@ -1,11 +1,12 @@
-import Phaser from "phaser";
-import Game from "./js/Game";
-import Menu from "./js/Menu"
+import Phaser from 'phaser';
+import Game from './js/Game';
+import Menu from './js/Menu';
+import Scores from './js/scores'
 import RexUIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin';
 
 const config = {
   type: Phaser.AUTO,
-  parent: "UB-Running",
+  parent: 'UB-Running',
   width: 800,
   height: 600,
   physics: {
@@ -25,7 +26,7 @@ const config = {
       mapping: 'rexUI',
     }, ]
   },
-  scene: [Menu, Game]
+  scene: [Menu, Game, Scores]
 };
 
 const game = new Phaser.Game(config);

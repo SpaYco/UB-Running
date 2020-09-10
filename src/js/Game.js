@@ -1,4 +1,4 @@
-import stone from "../assets/stoneCenter.png";
+import stone from '../assets/stoneCenter.png';
 import AlignGrid from './helpers/AlignGrid'
 import playerImage from '../assets/player_walk.png'
 import player from '../assets/player_walk.json'
@@ -42,14 +42,14 @@ class Game extends Phaser.Scene {
             cols: 11
         });
         this.style = {
-            font: "45px Arial",
-            color: "#fff",
-            align: "center"
+            font: '45px Arial',
+            color: '#fff',
+            align: 'center'
         };
         this.score = this.add.text(10, 10, `Score: ${global.currentScore}`, this.style)
 
         for (let i = 99; i <= 120; i++) {
-            this.placeBlock(i, "stone");
+            this.placeBlock(i, 'stone');
         }
         this.add.sprite(760, 150, 'bridge').setScale(1.5)
         this.add.sprite(700, 130, 'box').setDepth(3)
@@ -59,37 +59,37 @@ class Game extends Phaser.Scene {
             key: 'walk',
             frames: [{
                 key: 'player',
-                frame: "p3_walk01.png"
+                frame: 'p3_walk01.png'
             }, {
                 key: 'player',
-                frame: "p3_walk02.png"
+                frame: 'p3_walk02.png'
             }, {
                 key: 'player',
-                frame: "p3_walk03.png"
+                frame: 'p3_walk03.png'
             }, {
                 key: 'player',
-                frame: "p3_walk04.png"
+                frame: 'p3_walk04.png'
             }, {
                 key: 'player',
-                frame: "p3_walk05.png"
+                frame: 'p3_walk05.png'
             }, {
                 key: 'player',
-                frame: "p3_walk06.png"
+                frame: 'p3_walk06.png'
             }, {
                 key: 'player',
-                frame: "p3_walk07.png"
+                frame: 'p3_walk07.png'
             }, {
                 key: 'player',
-                frame: "p3_walk08.png"
+                frame: 'p3_walk08.png'
             }, {
                 key: 'player',
-                frame: "p3_walk09.png"
+                frame: 'p3_walk09.png'
             }, {
                 key: 'player',
-                frame: "p3_walk10.png"
+                frame: 'p3_walk10.png'
             }, {
                 key: 'player',
-                frame: "p3_walk11.png"
+                frame: 'p3_walk11.png'
             }, ],
             frameRate: 50,
             repeat: -1
@@ -98,7 +98,7 @@ class Game extends Phaser.Scene {
             key: 'jump',
             frames: [{
                 key: 'player',
-                frame: "p3_jump.png"
+                frame: 'p3_jump.png'
             }],
             frameRate: 1,
             repeat: 0
@@ -107,7 +107,7 @@ class Game extends Phaser.Scene {
             key: 'hurt',
             frames: [{
                 key: 'player',
-                frame: "p3_hurt.png"
+                frame: 'p3_hurt.png'
             }],
             frameRate: 1,
             repeat: 0
@@ -118,34 +118,34 @@ class Game extends Phaser.Scene {
             key: 'open',
             frames: [{
                 key: 'enemy',
-                frame: "switchLeft.png"
+                frame: 'switchLeft.png'
             }, {
                 key: 'enemy',
-                frame: "switchLeft.png"
+                frame: 'switchLeft.png'
             }, {
                 key: 'enemy',
-                frame: "switchMid.png"
+                frame: 'switchMid.png'
             }, {
                 key: 'enemy',
-                frame: "switchMid.png"
+                frame: 'switchMid.png'
             }, {
                 key: 'enemy',
-                frame: "switchRight.png"
+                frame: 'switchRight.png'
             }, {
                 key: 'enemy',
-                frame: "switchRight.png"
+                frame: 'switchRight.png'
             }, {
                 key: 'enemy',
-                frame: "switchMid.png"
+                frame: 'switchMid.png'
             }, {
                 key: 'enemy',
-                frame: "switchMid.png"
+                frame: 'switchMid.png'
             }, {
                 key: 'enemy',
-                frame: "switchLeft.png"
+                frame: 'switchLeft.png'
             }, {
                 key: 'enemy',
-                frame: "switchLeft.png"
+                frame: 'switchLeft.png'
             }],
             frameRate: 30,
             repeat: 0
@@ -185,21 +185,21 @@ class Game extends Phaser.Scene {
         } else {
             if (!global.gameOver) {
                 this.gameStyle = {
-                    font: "45px Helvetica",
-                    color: "#fff",
-                    align: "center"
+                    font: '45px Helvetica',
+                    color: '#fff',
+                    align: 'center'
                 };
                 this.textStyle = {
-                    font: "15px Helvetica",
-                    color: "#fff",
-                    align: "center"
+                    font: '15px Helvetica',
+                    color: '#fff',
+                    align: 'center'
                 };
                 this.add.text(300, 300, `Game Over! \n Your Score is ${Math.floor(global.currentScore / 10)}`, this.gameStyle)
                 this.add.text(370, 400, 'Click Anywhere To See Scores', this.textStyle)
                 global.gameOver = true
             }
             this.input.on('pointerdown', () => {
-                this.scene.start('Menu')
+                this.scene.start('Scores')
             })
         }
         this.score.text = `Score: ${Math.floor(global.currentScore / 10)}`
