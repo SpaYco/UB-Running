@@ -1,7 +1,10 @@
-// eslint-disable import/no-unresolved
-const merge = require('webpack-merge');
-const TerserPlugin = require('terser-webpack-plugin');
-const base = require('./base');
+// const merge = require('webpack-merge');
+import merge from 'webpack-merge';
+import TerserPlugin from 'terser-webpack-plugin';
+import base from './base';
+
+// const TerserPlugin = require('terser-webpack-plugin');
+// const base = require('./base');
 
 module.exports = merge(base, {
   mode: 'production',
