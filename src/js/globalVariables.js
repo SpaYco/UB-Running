@@ -1,4 +1,4 @@
-const global = {
+const globalVars = {
   timer: 0,
   spikeGravity: -500,
   currentScore: 0,
@@ -8,4 +8,4 @@ const global = {
   name: 'SpaYso',
 };
 
-export default global;
+export default globalVars;

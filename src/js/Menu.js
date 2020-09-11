@@ -1,5 +1,5 @@
 import bg from '../assets/bg.jpg';
-import global from './globalVariables';
+import globalVars from './globalVariables';
 
 
 let opacity = 'reached';
@@ -61,13 +61,13 @@ class Menu extends Phaser.Scene {
           this.nameTip.text = 'The Name Is Too Long!';
           this.nameTip.x = 275;
         } else {
-          global.name = this.input.node.value;
-          global.timer = 0;
-          global.spikeGravity = -500;
-          global.currentScore = 0;
-          global.currentAnimation = 'string';
-          global.gameOver = false;
-          global.difficulty = 0;
+          globalVars.name = this.input.node.value;
+          globalVars.timer = 0;
+          globalVars.spikeGravity = -500;
+          globalVars.currentScore = 0;
+          globalVars.currentAnimation = 'string';
+          globalVars.gameOver = false;
+          globalVars.difficulty = 0;
           this.scene.start('Game');
         }
       } else if (this.input.node.value.length > 0) {

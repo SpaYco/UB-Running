@@ -9,7 +9,7 @@ import enemy from '../assets/enemy.json';
 import enemyImage from '../assets/enemy.png';
 import bridge from '../assets/castleHalfMid.png';
 import box from '../assets/boxWarning.png';
-import global from './globalVariables';
+import globalVars from './globalVariables';
 
 
 // eslint-disable-next-line no-undef
@@ -45,7 +45,7 @@ class Game extends Phaser.Scene {
       color: '#fff',
       align: 'center',
     };
-    this.score = this.add.text(10, 10, `Score: ${global.currentScore}`, this.style);
+    this.score = this.add.text(10, 10, `Score: ${globalVars.currentScore}`, this.style);
 
     for (let i = 99; i <= 120; i += 1) {
       this.placeBlock(i, 'stone');
@@ -152,29 +152,29 @@ class Game extends Phaser.Scene {
   }
 
   update() {
-    if (this.player.y <= 400 && global.currentAnimation !== 'jump' && global.currentAnimation !== 'hurt') {
+    if (this.player.y <= 400 && globalVars.currentAnimation !== 'jump' && globalVars.currentAnimation !== 'hurt') {
       this.player.play('jump');
-      global.currentAnimation = 'jump';
-    } else if (this.player.y >= 440 && global.currentAnimation !== 'walk' && global.currentAnimation !== 'hurt') {
+      globalVars.currentAnimation = 'jump';
+    } else if (this.player.y >= 440 && globalVars.currentAnimation !== 'walk' && globalVars.currentAnimation !== 'hurt') {
       this.player.play('walk');
-      global.currentAnimation = 'walk';
+      globalVars.currentAnimation = 'walk';
     }
 
-    if (global.difficulty % 20000 === 0) {
-      global.spikeGravity -= 0.1;
+    if (globalVars.difficulty % 20000 === 0) {
+      globalVars.spikeGravity -= 0.1;
     }
 
-    if (global.currentAnimation !== 'hurt') {
-      global.currentScore += 1;
+    if (globalVars.currentAnimation !== 'hurt') {
+      globalVars.currentScore += 1;
       const chance = Math.floor((Math.random() * 100) + 1);
-      if (global.timer >= 60 && chance < 11 && chance > 7) {
+      if (globalVars.timer >= 60 && chance < 11 && chance > 7) {
         this.play();
         this.spike = this.physics.add.sprite(700, 110, 'spikes').setDepth(0);
         this.trapGroup.add(this.spike);
         this.spike.setGravityY(9999);
-        this.spike.setGravityX(global.spikeGravity);
+        this.spike.setGravityX(globalVars.spikeGravity);
         this.physics.add.collider(this.spike, this.floorGroup);
-        global.timer = 0;
+        globalVars.timer = 0;
       }
       this.input.on('pointerdown', () => {
         if (this.player.y >= 440) {
@@ -182,7 +182,7 @@ class Game extends Phaser.Scene {
         }
       });
     } else {
-      if (!global.gameOver) {
+      if (!globalVars.gameOver) {
         this.gameStyle = {
           font: '45px Helvetica',
           color: '#fff',
@@ -193,22 +193,22 @@ class Game extends Phaser.Scene {
           color: '#fff',
           align: 'center',
         };
-        this.add.text(300, 300, `Game Over! \n Your Score is ${Math.floor(global.currentScore / 10)}`, this.gameStyle);
+        this.add.text(300, 300, `Game Over! \n Your Score is ${Math.floor(globalVars.currentScore / 10)}`, this.gameStyle);
         this.add.text(370, 400, 'Click Anywhere To See Scores', this.textStyle);
-        global.gameOver = true;
+        globalVars.gameOver = true;
       }
       this.input.on('pointerdown', () => {
         this.scene.start('Scores');
       });
     }
-    this.score.text = `Score: ${Math.floor(global.currentScore / 10)}`;
+    this.score.text = `Score: ${Math.floor(globalVars.currentScore / 10)}`;
 
-    global.timer += 1;
+    globalVars.timer += 1;
 
 
     if (this.findEnemy()) {
       this.player.play('hurt');
-      global.currentAnimation = 'hurt';
+      globalVars.currentAnimation = 'hurt';
     }
   }
 

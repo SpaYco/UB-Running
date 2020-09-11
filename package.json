@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "build": "webpack --config webpack/prod.js ",
-    "start": "webpack-dev-server --config webpack/base.js --open"
+    "start": "webpack-dev-server --config webpack/base.js --open",
+    "test": "jest --watchAll"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,9 @@
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "file-loader": "^4.3.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.4.2",
+    "jest-fetch-mock": "^3.0.3",
     "raw-loader": "^3.1.0",
     "sass": "^1.26.10",
     "sass-loader": "^10.0.2",
@@ -37,12 +41,22 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
     "phaser": "^3.24.1",
     "phaser3-rex-plugins": "^1.1.27",
     "terser-webpack-plugin": "^4.1.0",
-    "clean-webpack-plugin": "^3.0.0",
     "webpack": "^4.44.1",
-    "html-webpack-plugin": "^3.2.0",
     "webpack-merge": "^4.2.2"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "identity-obj-proxy",
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "automock": false,
+    "setupFiles": [
+      "./test/mocks/fetchMock.js"
+    ]
   }
 }

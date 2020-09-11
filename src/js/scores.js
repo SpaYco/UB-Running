@@ -1,5 +1,7 @@
-import global from './globalVariables';
+import Phaser from 'phaser';
+import globalVars from './globalVariables';
 import bg from '../assets/bg.jpg';
+import { getData, pushData } from './calls';
 
 // eslint-disable-next-line no-undef
 class Scores extends Phaser.Scene {
@@ -36,17 +38,17 @@ class Scores extends Phaser.Scene {
       this.pushed = 'yes';
 
       this.person = {
-        user: global.name,
-        score: (Math.floor(global.currentScore / 10)),
+        user: globalVars.name,
+        score: (Math.floor(globalVars.currentScore / 10)),
       };
       this.jPerson = JSON.stringify(this.person);
 
-      this.pushData(this.jPerson);
+      pushData(this.jPerson);
     }
 
     if (this.loaded === 'no') {
       this.loaded = 'yes';
-      this.result = await this.getData();
+      this.result = await getData();
       this.add.text(320, 100, 'Leaderboard', this.style);
       this.add.text(250, 400, 'Your Score Has Been Saved', this.style);
       for (let i = 0; i < 5; i += 1) {
@@ -65,28 +67,6 @@ class Scores extends Phaser.Scene {
         this.opacity = 'reached';
       }
     }
-  }
-
-  async pushData(e) {
-    this.information = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/ezww6AGdTOyciw0GhscO/scores/', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        Accept: 'Application/json',
-        'Content-Type': 'application/json',
-      },
-      body: e,
-    }).then(response => response);
-    return this.information;
-  }
-
-  async getData() {
-    this.data = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/ezww6AGdTOyciw0GhscO/scores').then(result => result).catch((e) => e);
-    this.jData = await this.data.json();
-    this.jData = await this.jData.result;
-
-    await this.jData.sort((a, b) => b.score - a.score);
-    return this.jData;
   }
 }
 
