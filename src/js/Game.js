@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import stone from '../assets/stoneCenter.png';
 // eslint-disable-next-line import/no-cycle
 import AlignGrid from './helpers/AlignGrid';
@@ -12,7 +13,6 @@ import box from '../assets/boxWarning.png';
 import globalVars from './globalVariables';
 
 
-// eslint-disable-next-line no-undef
 class Game extends Phaser.Scene {
   constructor() {
     super({

@@ -1,9 +1,10 @@
+import Phaser from 'phaser';
 import bg from '../assets/bg.jpg';
 import globalVars from './globalVariables';
 
 
 let opacity = 'reached';
-// eslint-disable-next-line no-undef
+
 class Menu extends Phaser.Scene {
   constructor() {
     super({

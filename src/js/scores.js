@@ -3,7 +3,6 @@ import globalVars from './globalVariables';
 import bg from '../assets/bg.jpg';
 import { getData, pushData } from './calls';
 
-// eslint-disable-next-line no-undef
 class Scores extends Phaser.Scene {
   constructor() {
     super({
