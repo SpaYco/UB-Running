@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-import RexUIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin';
 // eslint-disable-next-line import/no-cycle
 import Game from './js/Game';
 import Menu from './js/Menu';
@@ -21,13 +20,6 @@ const config = {
   },
   dom: {
     createContainer: true,
-  },
-  plugins: {
-    scene: [{
-      key: 'rexUI',
-      plugin: RexUIPlugin,
-      mapping: 'rexUI',
-    }],
   },
   scene: [Menu, Game, Scores],
 };

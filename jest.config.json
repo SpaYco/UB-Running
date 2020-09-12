@@ -17,9 +17,12 @@
         "<rootDir>/node_modules/(?!ui-plugin).+\\.js$",
         "<rootDir>/node_modules/(?!ObjectFactory).+\\.js$"
     ],
+    "verbose": true,
+    "moduleDirectories": ["node_modules", "src"],
     "moduleFileExtensions": [
         "js",
-        "jsx"
+        "jsx",
+        ""
     ],
     "snapshotSerializers": [
         "enzyme-to-json/serializer"
