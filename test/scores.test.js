@@ -2,6 +2,7 @@
 import 'babel-polyfill';
 import 'jest-canvas-mock';
 import 'babel-jest';
+// eslint-disable-next-line import/extensions
 import Scores from '../src/js/Scores';
 
 const scoresScene = new Scores();
