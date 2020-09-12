@@ -20,11 +20,13 @@ grid-auto-flow: column;"> [![Contributors][contributors-shield]][contributors-ur
 ![screenshot](./screenshot.png)
 ![screenshot](./screenshot2.png)
 
-# Story
+## Story
 
 > SpaYso went for a trip to look for her partner SpaYco, but their enemy Ractive is trying to stop her! help her by jumping before the trap reaches SpaYso!
 
+## Design
 
+> I like simplicity in designs, so i used colors from the same range for simplicity and beauty.
 
 ## Built With
 
