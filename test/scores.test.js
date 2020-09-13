@@ -3,7 +3,7 @@ import 'babel-polyfill';
 import 'jest-canvas-mock';
 import 'babel-jest';
 // eslint-disable-next-line import/extensions
-import Scores from '../src/js/Scores';
+import Scores from '../src/js/scores';
 
 const scoresScene = new Scores();
 
