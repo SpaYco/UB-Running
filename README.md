@@ -24,6 +24,10 @@ grid-auto-flow: column;"> [![Contributors][contributors-shield]][contributors-ur
 
 > SpaYso went for a trip to look for her partner SpaYco, but their enemy Ractive is trying to stop her! help her by jumping before the trap reaches SpaYso!
 
+## How To Play
+
+- Use the mouse button or touchscreen to jump and avoid traps, get a high score to be listed in the Leaderboard!
+
 ## Design
 
 > I like simplicity in designs, so i used colors from the same range for simplicity and beauty.
