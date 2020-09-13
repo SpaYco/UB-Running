@@ -75,7 +75,7 @@ In Order To Test Follow These Steps:
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/Spayco/UB-Running/issues/).
 
 ## Show your support
 
