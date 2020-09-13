@@ -1,0 +1,19 @@
+name: Test
+
+on: pull_request
+
+jobs:
+  jest:
+     name: ESLint
+     runs-on: ubuntu-18.04
+     steps:
+         - uses: actions/checkout@v2
+         - uses: actions/setup-node@v1
+           with:
+             node-version: "12.x"
+         - name: Setup Jest
+           run: |
+             npm install
+             [ -f package.json ]
+         - name: Jest Report
+           run: npx jest
