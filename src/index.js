@@ -1,32 +1,29 @@
-import Phaser from "phaser";
-import logoImg from "./assets/logo.png";
+import Phaser from 'phaser';
+// eslint-disable-next-line import/no-cycle
+import Game from './js/Game';
+import Menu from './js/Menu';
+import Scores from './js/scores';
+// eslint-disable-next-line no-unused-vars
+import style from './sass/main.scss';
 
 const config = {
   type: Phaser.AUTO,
-  parent: "phaser-example",
+  parent: 'UB-Running',
   width: 800,
   height: 600,
-  scene: {
-    preload: preload,
-    create: create
-  }
+  physics: {
+    default: 'arcade',
+    gravity: {
+      y: 500,
+    },
+    debug: true,
+  },
+  dom: {
+    createContainer: true,
+  },
+  scene: [Menu, Game, Scores],
 };
 
 const game = new Phaser.Game(config);
 
-function preload() {
-  this.load.image("logo", logoImg);
-}
-
-function create() {
-  const logo = this.add.image(400, 150, "logo");
-
-  this.tweens.add({
-    targets: logo,
-    y: 450,
-    duration: 2000,
-    ease: "Power2",
-    yoyo: true,
-    loop: -1
-  });
-}
+export default game;

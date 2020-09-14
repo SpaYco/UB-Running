@@ -1,0 +1,83 @@
+{
+	"textures": [
+		{
+			"image": "enemy.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 70,
+				"h": 191
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "switchLeft.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 70,
+						"h": 70
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 11,
+						"w": 68,
+						"h": 59
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 68,
+						"h": 59
+					}
+				},
+				{
+					"filename": "switchMid.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 70,
+						"h": 70
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 3,
+						"w": 65,
+						"h": 67
+					},
+					"frame": {
+						"x": 1,
+						"y": 62,
+						"w": 65,
+						"h": 67
+					}
+				},
+				{
+					"filename": "switchRight.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 70,
+						"h": 70
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 11,
+						"w": 67,
+						"h": 59
+					},
+					"frame": {
+						"x": 1,
+						"y": 131,
+						"w": 67,
+						"h": 59
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:88493b229785673ae57413bfc48976ed:9ea61fdcd09c64c27da272acaa742d8f:a99356c10d69482e9bee53d25c3d05e1$"
+	}
+}
