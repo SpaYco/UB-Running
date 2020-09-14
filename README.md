@@ -35,7 +35,7 @@ grid-auto-flow: column;"> [![Contributors][contributors-shield]][contributors-ur
 ## Built With
 
 - HTML
-- SASS
+- SASS/CSS
 - JavaScript
 - WebPack
 - Babel
